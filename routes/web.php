@@ -9,8 +9,9 @@ Route::get('/researchrequest/create', [ResearchRequestController::class, 'create
 Route::get('/researchrequest/{id}/edit', [ResearchRequestController::class, 'edit'])->name('researchrequest.edit');
 Route::get('/researchrequest/{id}', [ResearchRequestController::class, 'show'])->name('researchrequest.show');
 Route::post('/researchrequest', [ResearchRequestController::class, 'store'])->name('researchrequest.store');
-Route::patch('/researchrequest/{id}', [ResearchRequestController::class, 'update'])->name('researchrequest.update');
+Route::put('/researchrequest/{id}', [ResearchRequestController::class, 'update'])->name('researchrequest.update');
 Route::delete('/researchrequest/{id}', [ResearchRequestController::class, 'destroy'])->name('researchrequest.destroy');
 
-
+// Ini akan menghasilkan semua 7 route di atas otomatis, sesuai konvensi Laravel.
+// Route::resource('researchrequest', ResearchRequestController::class);
 
