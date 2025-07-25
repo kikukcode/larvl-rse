@@ -38,7 +38,18 @@ class ResearchRequestController extends Controller
         return view('admin.research.show', compact('research'));
     }
 
-    public function  store(Request $request)
+    public function researchByUser($userId)
+    {
+        $researches = ResearchRequest::where('user_id', $userId)->get();
+
+        $data = [
+            'title' => 'Data Riset Mahasiswa',
+            'researches' => $researches
+        ];
+        return view('admin.research.index', $data);
+    }
+
+    public function store(Request $request)
     {
         //validasi
         $request->validate([
@@ -60,6 +71,7 @@ class ResearchRequestController extends Controller
 
         // simpan data
         ResearchRequest::create([
+            'user_id' => auth()->user()->id,
             'student_name' => $request->input('student_name'),
             'research_title' => $request->input('research_title'),
             'target_institution' => $request->input('target_institution'),

@@ -21,6 +21,30 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Kontak</a>
                 </li>
+                {{-- login/logout --}}
+                @if (Auth::check())
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="">Profil</a></li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <li>
+                                    <button type="submit" class="dropdown-item">Logout</button>
+                                </li>
+                            </form>
+                        </ul>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">Daftar</a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>

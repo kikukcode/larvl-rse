@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('document_file'); // path file
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
+
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
         });
     }
 

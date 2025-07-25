@@ -10,6 +10,7 @@ class ResearchRequest extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'student_name',
         'research_title',
         'target_institution',
